@@ -1,0 +1,11 @@
+#logo {
+    width: 60px;
+    margin-left: -8%;
+}
+
+:host{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

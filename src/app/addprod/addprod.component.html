@@ -1,0 +1,52 @@
+<section id="postProduct">
+    <div class="conatainer p-5">
+      <h3>Add Product</h3>
+      <hr>
+      <app-message></app-message>
+      <div *ngIf="!categories" class="m-auto">
+        <h1 class="text-center display-3 mt-5">
+          <i class="fa fa-spinner fa-spin"></i>
+        </h1>
+      </div>
+      <div *ngIf="categories" class="card bg-light">
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label class="form-control-label">Product Id</label>
+              <input type="text" name="pid" class="form-control" [(ngModel)]="product['productId']">
+            </div>
+            <br>
+            <div class="form-group">
+              <label class="form-control-label">Product Name</label>
+              <input type="text" name="pname" class="form-control" [(ngModel)]="product['productname']">
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Category</label>&nbsp;&nbsp;
+                <select name="categoryId" [(ngModel)]="product['categoryId']" class="custom-select">
+                    <option *ngFor="let category of categories" [value] = "category._id">
+                        {{ category.name }}
+                    </option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="form-control-label">Unit</label>
+                <input type="number" name="unit" class="form-control" [(ngModel)]="product['unit']">
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" name="description" rows="5" [(ngModel)]= "product['description']"></textarea>
+            </div>
+            <br>
+            <div class="buttcon">
+                <button type="button" class="btn btn-success" (click)="add()" [disabled] = "btnDisabled">Add</button>
+                &nbsp;&nbsp;
+                <button type="button" routerLink="/inventory" class="btn btn-danger">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,39 @@
+
+<div class="cont">
+    <h1>Products</h1>
+    <a routerLink="add" class="btn btn-sm btn-success mb-2">Add Product</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width: 15%">Product ID</th>
+                <th style="width: 15%">Product Category</th>
+                <th style="width: 15%">Product Name</th>
+                <th style="width: 15%">Product Description</th>
+                <th style="width: 15%">Units</th>
+                <th style="width: 10%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{product.id}}</td>
+                <td>{{product.category.name}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.unit}}</td>
+                <td style="white-space: nowrap">
+                    <a routerLink="/inventory/edit/{{product.id}}/" class="btn btn-sm btn-primary mr-1">Edit</a>
+                    &nbsp;
+                    <button class="btn btn-sm btn-danger btn-delete-user" (click)="delete(product.id)">
+                        <span class="spinner-border spinner-border-sm" *ngIf="!products"></span>
+                        <span>Delete</span>
+                    </button>
+                </td>
+            </tr>
+            <tr *ngIf="!products">
+                <td colspan="4" class="text-center">
+                    <span class="spinner-border spinner-border-lg align-center"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
