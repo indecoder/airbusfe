@@ -1,7 +1,34 @@
 
 <div class="cont">
     <h1>Products</h1>
-    <a routerLink="add" class="btn btn-sm btn-success mb-2">Add Product</a>
+    <div class="tpc">
+        <div><a routerLink="add" class="btn btn-sm btn-success mb-2">Add Product</a></div>
+        <div style="display: flex;">
+            <div>
+                <div>
+                    <label>Category</label>&nbsp;&nbsp;
+                    <select name="categoryId" [(ngModel)]="selcatid" class="custom-select">
+                        <option [value]="null" disabled>Select</option>
+                        <option *ngFor="let category of categories" [value] = "category._id">
+                            {{ category.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            &nbsp;&nbsp;
+            <div>
+                <div>
+                    <input type="text" name="srch" [(ngModel)]="srchtxt">
+                </div>
+            </div>
+            &nbsp;&nbsp;
+            <div class="">
+                <div class="btn btn-primary btn-sm" (click)="searchCat()">Search</div>
+                &nbsp;&nbsp;
+                <div class="btn btn-warning btn-sm" (click)="reset()">Reset</div>
+            </div>
+        </div>
+    </div>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -24,7 +51,7 @@
                     <a routerLink="/inventory/edit/{{product.id}}/" class="btn btn-sm btn-primary mr-1">Edit</a>
                     &nbsp;
                     <button class="btn btn-sm btn-danger btn-delete-user" (click)="delete(product.id)">
-                        <span class="spinner-border spinner-border-sm" *ngIf="!products"></span>
+                        <span id="sp{{product.id}}"></span>
                         <span>Delete</span>
                     </button>
                 </td>

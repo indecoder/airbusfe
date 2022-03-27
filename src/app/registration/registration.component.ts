@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestApiService } from '../rest-api.service';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-registration',
@@ -51,7 +52,7 @@ export class RegistrationComponent implements OnInit {
     try {
       if(this.validate()) {
         const data:any = await this.rest.post(
-          'https://3030-manishdev-airbusbe-a2ckahr6wl7.ws-us38.gitpod.io/api/accounts/signup',
+          `${environment.apiurl}/api/accounts/signup`,
           {
             name: this.name,
             email: this.email,

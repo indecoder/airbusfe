@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { RestApiService } from '../rest-api.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
 
     try {
       if (this.validate()) {
-        const data:any = await this.rest.post('https://3030-manishdev-airbusbe-a2ckahr6wl7.ws-us38.gitpod.io/api/accounts/login', {
+        const data:any = await this.rest.post(`${environment.apiurl}/api/accounts/login`, {
           email: this.email,
           password: this.password
         });

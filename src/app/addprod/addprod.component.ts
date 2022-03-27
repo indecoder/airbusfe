@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { RestApiService } from '../rest-api.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-addprod',
@@ -30,7 +31,7 @@ export class AddprodComponent implements OnInit {
   async ngOnInit() {
     try{
       const data:{[x:string]: any} = await this.rest.get(
-        'https://3030-manishdev-airbusbe-a2ckahr6wl7.ws-us38.gitpod.io/api/category'
+        `${environment.apiurl}/api/category`
       );
       data['success']
         ? (this.categories = data['categories'])
@@ -71,7 +72,7 @@ export class AddprodComponent implements OnInit {
       if (this.validate(this.product)) {
         
         const data:{[key:string]: any} = await this.rest.post(
-          'https://3030-manishdev-airbusbe-a2ckahr6wl7.ws-us38.gitpod.io/api/products',
+          `${environment.apiurl}/api/products`,
           this.product
         )
 

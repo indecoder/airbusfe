@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { RestApiService } from './rest-api.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class DataService {
     try {
       if (localStorage.getItem('token')) {
         const data:any = await this.rest.get(
-          'https://3030-manishdev-airbusbe-a2ckahr6wl7.ws-us38.gitpod.io/api/accounts/profile'
+          `${environment.apiurl}/api/accounts/profile`
         );
         this.user = data['user'];
       }
@@ -47,7 +48,7 @@ export class DataService {
   }
 
   getAll() {
-    return this.rest.get('https://3030-manishdev-airbusbe-a2ckahr6wl7.ws-us38.gitpod.io/api/products')
+    return this.rest.get(`${environment.apiurl}/api/products`)
   }
 
 }
